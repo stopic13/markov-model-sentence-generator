@@ -1,17 +1,18 @@
 // change require to es6 import style
 import $ from 'jquery';
+import './style.scss';
+
 $('#main').html('Here we go!');
 
 
-let Timer = {
+const Timer = {
   secondsPassed: 0,
-  consoleMsg: function(){
-    this.secondsPassed++;
-    $(`#main`).text(`You've been on this page for ${this.secondsPassed} seconds!`);
+  consoleMsg() {
+    this.secondsPassed += 1;
+    $('#main').text(`You've been on this page for ${this.secondsPassed} seconds!`);
   },
-   increment: function(){
-     setInterval(() =>
-     {this.consoleMsg()}, 1000);
-   }
-}
+  increment() {
+    setInterval(() => { this.consoleMsg(); }, 1000);
+  },
+};
 Timer.increment();
