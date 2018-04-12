@@ -1,18 +1,8 @@
-// change require to es6 import style
-import $ from 'jquery';
-import './style.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-$('#main').html('Here we go!');
-
-
-const Timer = {
-  secondsPassed: 0,
-  increment() {
-    this.secondsPassed += 1;
-    $('#main').text(`You've been on this page for ${this.secondsPassed} seconds!`);
-  },
-  trackTime() {
-    setInterval(() => { this.increment(); }, 1000);
-  },
+const App = () => {
+  return <div className="test">All the React are belong to us!</div>;
 };
-Timer.trackTime();
+
+ReactDOM.render(<App />, document.getElementById('main'));
