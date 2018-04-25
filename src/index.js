@@ -1,14 +1,24 @@
 import React from 'react';
-import ReactDOM, { Switch } from 'react-dom';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { Switch, BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import '../style.scss';
 
 
 const About = (props) => {
-  return <div> All there is to know about me </div>;
+  return (
+    <div>
+      <h1> All there is to know about me </h1>
+      <img src="https://media.giphy.com/media/3ohs7Lr3EacQi1Dh8Q/giphy.gif" alt="" width="480" height="360" />
+    </div>
+  );
 };
 const Welcome = (props) => {
-  return <div>Welcome</div>;
+  return (
+    <div>
+      <h1> Welcome </h1>
+      <img src="https://media.giphy.com/media/BMaE0wCQhcJj2/giphy.gif" alt="" width="480" height="360" />
+    </div>
+  );
 };
 const Test = (props) => {
   return <div> ID: {props.match.params.id} </div>;
