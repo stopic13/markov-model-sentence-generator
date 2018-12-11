@@ -3,12 +3,13 @@ import React from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Jumbotron, Button } from 'react-bootstrap';
 import axios from 'axios';
+import './style.scss';
 
 class SentenceGenerator extends React.Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    this.state = { sentence: '' };
+    this.state = { sentence: 'Click the button below to generate a sentence' };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -25,14 +26,14 @@ class SentenceGenerator extends React.Component {
 
   render() {
     return (
-      <div>
-        <Jumbotron>
+      <div className="sentence-box">
+        <Jumbotron class="jumbo">
           <h1>Sentence Generator</h1>
           <p>
             {this.state.sentence}
           </p>
           <p>
-            <Button bsStyle="primary" onClick={this.handleClick}> Generate Sentence </Button>
+            <Button className="submit-button" bsStyle="primary" onClick={this.handleClick}> Generate Sentence </Button>
           </p>
         </Jumbotron>
       </div>
@@ -49,12 +50,10 @@ const FallBack = () => {
 const App = () => {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" component={SentenceGenerator} />
-          <Route component={FallBack} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={SentenceGenerator} />
+        <Route component={FallBack} />
+      </Switch>
     </Router>
   );
 };
