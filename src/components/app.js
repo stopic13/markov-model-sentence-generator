@@ -26,16 +26,19 @@ class SentenceGenerator extends React.Component {
 
   render() {
     return (
-      <div className="sentence-box">
-        <Jumbotron class="jumbo">
-          <h1>Sentence Generator</h1>
-          <p>
-            {this.state.sentence}
-          </p>
-          <p>
-            <Button className="submit-button" bsStyle="primary" onClick={this.handleClick}> Generate Sentence </Button>
-          </p>
-        </Jumbotron>
+      <div>
+        <div className="sentence-box">
+          <Jumbotron class="jumbo">
+            <h1>Sentence Generator</h1>
+            <p>
+              {this.state.sentence}
+            </p>
+            <p>
+              <Button className="submit-button" bsStyle="primary" btn-onClick={this.handleClick}> Generate Sentence </Button>
+            </p>
+          </Jumbotron>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -46,6 +49,9 @@ const FallBack = () => {
   return <div>URL Not Found</div>;
 };
 
+const Footer = () => {
+  return <footer> HI <i className="fab fa-github" /></footer>;
+};
 
 const App = () => {
   return (
