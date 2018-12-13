@@ -14,7 +14,7 @@ class SentenceGenerator extends React.Component {
   }
 
   handleClick() {
-    axios.get('http://localhost:8000/sentence')
+    axios.get('https://markov-chain-backend.herokuapp.com/sentence')
       .then((response) => {
         console.log(response);
         this.setState({ sentence: response.data });
