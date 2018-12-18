@@ -19,12 +19,13 @@ class SentenceGenerator extends React.Component {
       sentence: 'Click the button below to generate a sentence',
       books: {
         'Pride and Prejudice': false,
-        'Sleeping Beauty': false,
+        'Jane Eyre': false,
       },
     };
     this.handleClick = this.handleClick.bind(this);
     this.selectBook = this.selectBook.bind(this);
   }
+
 
   handleClick() {
     axios.get(
@@ -44,9 +45,12 @@ class SentenceGenerator extends React.Component {
         console.log(error);
       });
   }
-  selectBook(e) {
+  selectBook(e, book) {
+    e.preventDefault();
+    console.log('Select book');
+    console.log(book);
     const { books } = this.state;
-    books[e.target.value] = !books[e.target.value];
+    books[book] = !books[book];
     this.setState({ books });
   }
 
@@ -56,16 +60,27 @@ class SentenceGenerator extends React.Component {
       console.log(book);
       if (this.state.books[book.title]) {
         return (
-          <div className="flex-item">
-            <img src={book.img} alt="" />
+          <div className="flex-item-selected"
+            role="button"
+            tabIndex={0}
+            onClick={e => this.selectBook(e, book.title)}
+            value={book.title}
+          >
+            <img src={book.img} alt={book.title} />
             <h1> {book.title} </h1>
             <p> {book.author} </p>
           </div>
         );
       } else {
+        console.log(book.title);
         return (
-          <div className="flex-item">
-            <img src={book.img} alt="" />
+          <div className="flex-item"
+            role="button"
+            tabIndex={0}
+            onClick={e => this.selectBook(e, book.title)}
+            value={book.title}
+          >
+            <img src={book.img} alt={book.title} />
             <h1> {book.title} </h1>
             <p> {book.author} </p>
           </div>
@@ -84,10 +99,10 @@ class SentenceGenerator extends React.Component {
     console.log(this.state);
     return (
       <div className="main-container">
+        <h1>Sentence Generator</h1>
         <div className="flex-container-wrapper">
           <div className="sentence-box">
-            <Jumbotron class="jumbo">
-              <h1>Sentence Generator</h1>
+            <Jumbotron className="jumbo">
               <p>
                 {this.state.sentence}
               </p>
