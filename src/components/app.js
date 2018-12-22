@@ -40,8 +40,8 @@ class SentenceGenerator extends React.Component {
 
   handleClick() {
     axios.get(
-      //      'https://markov-chain-backend.herokuapp.com/sentence',
-      'http://localhost:8000/sentence',
+      'https://markov-chain-backend.herokuapp.com/sentence',
+      //      'http://localhost:8000/sentence',
       {
         params: {
           books: this.state.books,
@@ -116,9 +116,9 @@ class SentenceGenerator extends React.Component {
         <div className="flex-container-wrapper">
           <div className="sentence-box">
             <Jumbotron className="jumbo">
-              <p>
+              <h3>
                 {this.state.sentence}
-              </p>
+              </h3>
               <p>
                 <Button className="submit-button" bsStyle="primary" onClick={this.handleClick}> Go! </Button>
               </p>
@@ -132,34 +132,36 @@ class SentenceGenerator extends React.Component {
           </div>
         </div>
         <div className="flex-container-wrapper">
-          <h1> About </h1>
+          <h1> About Markov Chains</h1>
           <div className="sentence-box">
-            <h3> Q: What is a Markov Chain </h3>
-            <h4> A mathematical model describing the probabilty of a transitioning to a set of states, based only on the current state. </h4>
-            <h3> Q: What does `Second-Order` mean? </h3>
-            <h4> It means the probabilty of transitioning to the next state is based on the previous two states.
+            <h4> What is a Markov Chain </h4>
+            <p> A mathematical model describing the probabilty of a transitioning to a set of states, based only on the current state. </p>
+            <h4> What does Second-Order mean? </h4>
+            <p> The probabilty of transitioning to the next state is based on the previous two states.
              In the context of sentence generation it means the state space consists of two words.
-            </h4>
-            <h3> Q: How are the probabilties generated? </h3>
-            <h4> The selected texts are parsed into a dictionary where the key is a an ordered pair of <span style={{ color: 'blue' }}>(word_1, word_2)</span> and the value
-            is another dictionary where the key is <span style={{ color: 'green' }}> word_3 </span> and the value is the frequency of
-              <span style={{ color: 'green' }}> word_3 </span>ocurring after <span style={{ color: 'blue' }}>word_1</span>.
-            and <span style={{ color: 'blue' }}> word_2 </span>. Then, for each ordered pair of words in the dictonary the corresponding
-             dictionary is turned into a mapping of word_3 to the probabiillity of
-             word_3 ocurring after word_1 and word_2 by dividing the frequency of word_3 by the total frequencies of all the words ocurring after
-              <span style={{ color: 'blue' }}>word_1</span> and <span style={{ color: 'blue' }}>word_2</span>..
-            </h4>
-            <h3> Q: How are the sentences generated? </h3>
-            <h4> A pair <span style={{ color: 'blue' }}>(word_1, word_2)</span> where <span style={{ color: 'blue' }}>word_1</span>
-             has a capital letter is chosen at random. Based on <span style={{ color: 'blue' }}>(word_1, word_2)</span>,,
-             word_3 is chosen according to the probabilty of it occurring after word_1 and word_2.
-             This process repeats until a the model trasitions to a state where word_2 has stop punctuation (., !, or ?).
-            </h4>
-            <h3> Q: Where is the source available? </h3>
-            <h4>
+            </p>
+            <h4> How are the probabilities stored? </h4>
+            <p> The selected texts are parsed into a dictionary where the key is a an ordered pair of words and the value
+            is a mapping of each word that comes after the first two to the probabiliity of its occurrence after those two words.
+            </p>
+            <h4> How are the probabilities generated? </h4>
+            <p> The probability of <span style={{ 'font-weight': 'bold' }}> word_3 </span> occurring in a sentence directly after <span style={{ 'font-weight': 'bold' }}>word_1</span>
+            and <span style={{ 'font-weight': 'bold' }}> word_2 </span> is the total number of times <span style={{ 'font-weight': 'bold' }}>word_3</span> occurs after
+              <span style={{ 'font-weight': 'bold' }}> word_1 </span>
+            and <span style={{ 'font-weight': 'bold' }}> word_2 </span> divided by the sum of the frequencies of all the words occurring directly after
+              <span style={{ 'font-weight': 'bold' }}> word_1 </span>
+            and <span style={{ 'font-weight': 'bold' }}> word_2 </span>
+            </p>
+            <h4> How are the sentences generated? </h4>
+            <p> A pair of words where the first word has a capital letter is chosen at random. The next word is chosen
+            according to the probabilty it occurs after this pair.
+             This process repeats until the model transitions to a state with stop punctuation (., !, or ?).
+            </p>
+            <h4>Where is the source available? </h4>
+            <p>
               Frontend: <a href="http://www.github.com/stopic13/markov-model-sentence-generator"><i class="fa fa-github" /></a>
               <br /> Backend:  <a href="http://www.github.com/stopic13/markov-model-sentence-generator-backend"><i class="fa fa-github" /></a>
-            </h4>
+            </p>
           </div>
         </div>
       </div>
