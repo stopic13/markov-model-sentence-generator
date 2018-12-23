@@ -145,8 +145,8 @@ class SentenceGenerator extends React.Component {
             is a mapping of each word that comes after the first two to the probabiliity of its occurrence after those two words.
             </p>
             <h4> How are the probabilities generated? </h4>
-            <p> The probability of <span style={{ 'font-weight': 'bold' }}> word_3 </span> occurring in a sentence directly after <span style={{ 'font-weight': 'bold' }}>word_1</span>
-            and <span style={{ 'font-weight': 'bold' }}> word_2 </span> is the total number of times <span style={{ 'font-weight': 'bold' }}>word_3</span> occurs after
+            <p> The probability of <span style={{ 'font-weight': 'bold' }}> word_3 </span> occurring in a sentence directly after <span style={{ 'font-weight': 'bold' }}> word_1 </span>
+            and <span style={{ 'font-weight': 'bold' }}> word_2 </span> is the total number of times <span style={{ 'font-weight': 'bold' }}> word_3 </span> occurs after
               <span style={{ 'font-weight': 'bold' }}> word_1 </span>
             and <span style={{ 'font-weight': 'bold' }}> word_2 </span> divided by the sum of the frequencies of all the words occurring directly after
               <span style={{ 'font-weight': 'bold' }}> word_1 </span>
@@ -155,7 +155,8 @@ class SentenceGenerator extends React.Component {
             <h4> How are the sentences generated? </h4>
             <p> A pair of words where the first word has a capital letter is chosen at random. The next word is chosen
             according to the probabilty it occurs after this pair.
-             This process repeats until the model transitions to a state with stop punctuation (., !, or ?).
+             This process repeats until the model transitions to a state with stop punctuation
+              (<span style={{ 'font-weight': 'bold' }}>.</span>, <span style={{ 'font-weight': 'bold' }}>?</span>, <span style={{ 'font-weight': 'bold' }}>!</span>)
             </p>
             <h4>Where is the source available? </h4>
             <p>
